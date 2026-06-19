@@ -163,13 +163,18 @@
 </head>
 <body>
 
-    <!-- Simple Glassmorphic Header -->
     <nav class="navbar navbar-expand-lg navbar-custom fixed-top">
         <div class="container-fluid">
             <span class="navbar-brand navbar-brand-custom">
                 <i class="bi bi-shield-check me-2"></i>SouthMrt
             </span>
-            <div class="ms-auto">
+            <div class="ms-auto d-flex align-items-center gap-2"> {{-- DISESUAIKAN: Menambahkan d-flex dan gap agar tombol POS dan Keluar berjejer rapi --}}
+                
+                {{-- TOMBOL BARU: Akses cepat menuju halaman Dashboard Utama --}}
+                <a href="{{ route('tebet.pos.index') }}" class="btn btn-primary btn-sm rounded-pill px-3">
+                    <i class="bi bi-cart-fill me-1"></i> Buka POS Kasir Tebet
+                    </a>
+
                 <a href="{{ route('logout') }}" class="btn btn-outline-light btn-sm rounded-pill px-3">
                     <i class="bi bi-box-arrow-right me-1"></i> Keluar
                 </a>

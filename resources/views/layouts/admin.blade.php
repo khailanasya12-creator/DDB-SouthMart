@@ -212,7 +212,7 @@
 <body>
 
     <!-- SIDEBAR -->
-    <aside class="sidebar">
+   <aside class="sidebar">
         <div class="sidebar-brand">
             <img src="/assets/images/logo.png" alt="SouthMart Logo">
             <div>
