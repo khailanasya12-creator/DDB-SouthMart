@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\PosController; // Memastikan rute tahu di mana letak file PosController
 
 // Redirect root
 Route::get('/', function () {
@@ -42,3 +43,18 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/tebet/pos/checkout', [App\Http\Controllers\PosController::class, 'checkout'])->name('tebet.pos.checkout');
     // =============================================================================
 });
+
+// Route baru untuk menangani submit form tambah data barang
+Route::post('/tebet/pos/store-product', [PosController::class, 'storeProduct'])->name('tebet.pos.store-product');
+Route::get('/tebet/produk', [\App\Http\Controllers\PosController::class, 'indexProduk'])->name('tebet.produk.index');
+Route::get('/tebet/monitoring', [\App\Http\Controllers\PosController::class, 'indexMonitoring'])->name('tebet.monitoring.index');
+Route::get('/tebet/replikasi', [\App\Http\Controllers\PosController::class, 'indexReplikasis'])->name('tebet.replikasi.index');
+Route::post('/tebet/replikasi/sync', [\App\Http\Controllers\PosController::class, 'prosesSync'])->name('tebet.replikasi.sync');
+Route::get('/tebet/penjualan-nasional', [\App\Http\Controllers\PosController::class, 'indexPenjualanNasional'])->name('tebet.penjualan.nasional');
+Route::get('/tebet/query-lintas-node', [\App\Http\Controllers\PosController::class, 'indexQueryLintasNode'])->name('tebet.query.lintasnode');
+Route::get('/tebet/inventaris', [\App\Http\Controllers\PosController::class, 'indexInventaris'])->name('tebet.inventaris.index');
+Route::get('/tebet/laporan', [\App\Http\Controllers\PosController::class, 'indexLaporan'])->name('tebet.laporan.index');
+Route::get('/tebet/cabang', [\App\Http\Controllers\PosController::class, 'indexCabang'])->name('tebet.cabang.index');
+Route::get('/tebet/pengguna', [\App\Http\Controllers\PosController::class, 'indexPengguna'])->name('tebet.pengguna.index');
+Route::get('/tebet/pengaturan', [\App\Http\Controllers\PosController::class, 'indexPengaturan'])->name('tebet.pengaturan.index');
+Route::delete('/tebet/produk/{id}', [\App\Http\Controllers\PosController::class, 'destroyProduk'])->name('tebet.produk.destroy');

@@ -213,89 +213,108 @@
 
     <!-- SIDEBAR -->
    <aside class="sidebar">
-        <div class="sidebar-brand">
-            <img src="/assets/images/logo.png" alt="SouthMart Logo">
-            <div>
-                <h5>SouthMart HQ</h5>
-                <small class="text-white-50 fs-xs" style="font-size: 0.75rem;">Admin Monitoring</small>
-            </div>
+    <div class="sidebar-brand">
+        <img src="/assets/images/logo.png" alt="SouthMart Logo">
+        <div>
+            <h5>SouthMart HQ</h5>
+            <small class="text-white-50 fs-xs" style="font-size: 0.75rem;">Admin Monitoring</small>
         </div>
+    </div>
 
-        <ul class="sidebar-menu">
-            <li class="sidebar-item">
-                <a href="{{ route('admin.dashboard') }}" class="sidebar-link {{ Request::routeIs('admin.dashboard') ? 'active' : '' }}">
-                    <i class="bi bi-grid-1x2-fill"></i>
-                    <span>Dashboard</span>
-                </a>
-            </li>
-            <li class="sidebar-item">
-                <a href="{{ route('admin.monitoring') }}" class="sidebar-link {{ Request::routeIs('admin.monitoring') ? 'active' : '' }}">
-                    <i class="bi bi-display-fill"></i>
-                    <span>Monitoring Cabang</span>
-                </a>
-            </li>
-            <li class="sidebar-item">
-                <a href="{{ route('admin.national-sales') }}" class="sidebar-link {{ Request::routeIs('admin.national-sales') ? 'active' : '' }}">
-                    <i class="bi bi-cart-check-fill"></i>
-                    <span>Penjualan Nasional</span>
-                </a>
-            </li>
-            <li class="sidebar-item">
-                <a href="{{ route('admin.cross-node-query') }}" class="sidebar-link {{ Request::routeIs('admin.cross-node-query') ? 'active' : '' }}">
-                    <i class="bi bi-database-fill-gear"></i>
-                    <span>Query Lintas Node</span>
-                </a>
-            </li>
-            <li class="sidebar-item">
-                <a href="{{ route('admin.produk.index') }}" class="sidebar-link {{ Request::routeIs('admin.produk.*') ? 'active' : '' }}">
-                    <i class="bi bi-box-seam-fill"></i>
-                    <span>Produk</span>
-                </a>
-            </li>
-            <li class="sidebar-item">
-                <a href="{{ route('admin.inventory') }}" class="sidebar-link {{ Request::routeIs('admin.inventory') ? 'active' : '' }}">
-                    <i class="bi bi-archive-fill"></i>
-                    <span>Inventaris</span>
-                </a>
-            </li>
-            <li class="sidebar-item">
-                <a href="{{ route('admin.branches') }}" class="sidebar-link {{ Request::routeIs('admin.branches') ? 'active' : '' }}">
-                    <i class="bi bi-shop-window"></i>
-                    <span>Cabang</span>
-                </a>
-            </li>
-            <li class="sidebar-item">
-                <a href="{{ route('admin.replication') }}" class="sidebar-link {{ Request::routeIs('admin.replication') ? 'active' : '' }}">
-                    <i class="bi bi-arrow-repeat"></i>
-                    <span>Replikasi & Konsistensi</span>
-                </a>
-            </li>
-            <li class="sidebar-item">
-                <a href="{{ route('admin.reports') }}" class="sidebar-link {{ Request::routeIs('admin.reports') ? 'active' : '' }}">
-                    <i class="bi bi-file-earmark-bar-graph-fill"></i>
-                    <span>Laporan</span>
-                </a>
-            </li>
-            <li class="sidebar-item">
-                <a href="{{ route('admin.users') }}" class="sidebar-link {{ Request::routeIs('admin.users') ? 'active' : '' }}">
-                    <i class="bi bi-people-fill"></i>
-                    <span>Pengguna</span>
-                </a>
-            </li>
-            <li class="sidebar-item">
-                <a href="{{ route('admin.settings') }}" class="sidebar-link {{ Request::routeIs('admin.settings') ? 'active' : '' }}">
-                    <i class="bi bi-gear-fill"></i>
-                    <span>Pengaturan</span>
-                </a>
-            </li>
-            <li class="sidebar-item border-top border-secondary-subtle my-3 pt-3">
-                <a href="{{ route('doc.index') }}" class="sidebar-link" target="_blank">
-                    <i class="bi bi-book-half text-warning"></i>
-                    <span class="text-warning">Modul Dokumentasi</span>
-                </a>
-            </li>
-        </ul>
-    </aside>
+    <ul class="sidebar-menu">
+        {{-- 1. Dashboard Utama POS --}}
+        <li class="sidebar-item">
+            <a href="{{ route('admin.dashboard') }}" class="sidebar-link {{ Request::routeIs('admin.dashboard') ? 'active' : '' }}">
+                <i class="bi bi-grid-1x2-fill"></i>
+                <span>Dashboard</span>
+            </a>
+        </li>
+
+        {{-- 2. Manajemen Produk (CRUD) --}}
+        <li class="sidebar-item">
+            <a href="{{ route('tebet.produk.index') }}" class="sidebar-link {{ Request::routeIs('tebet.produk.index') ? 'active' : '' }}">
+                <i class="bi bi-box-seam-fill"></i>
+                <span>Produk</span>
+            </a>
+        </li>
+
+        {{-- 3. Monitoring Jaringan Cabang (Dinamis) --}}
+        <li class="sidebar-item">
+            <a href="{{ route('tebet.monitoring.index') }}" class="sidebar-link {{ Request::routeIs('tebet.monitoring.index') ? 'active' : '' }}">
+                <i class="bi bi-display-fill"></i>
+                <span>Monitoring Cabang</span>
+            </a>
+        </li>
+
+        {{-- 4. Penjualan Nasional (Union Query Terfragmentasi) --}}
+        <li class="sidebar-item">
+            <a href="{{ route('tebet.penjualan.nasional') }}" class="sidebar-link {{ Request::routeIs('tebet.penjualan.nasional') ? 'active' : '' }}">
+                <i class="bi bi-cart-check-fill"></i>
+                <span>Penjualan Nasional</span>
+            </a>
+        </li>
+
+        {{-- 5. Query Lintas Node (Remote Query Execution) --}}
+        <li class="sidebar-item">
+            <a href="{{ route('tebet.query.lintasnode') }}" class="sidebar-link {{ Request::routeIs('tebet.query.lintasnode') ? 'active' : '' }}">
+                <i class="bi bi-database-fill-gear"></i>
+                <span>Query Lintas Node</span>
+            </a>
+        </li>
+
+        {{-- 6. Inventaris Toko Lokal --}}
+        <li class="sidebar-item">
+            <a href="{{ route('tebet.inventaris.index') }}" class="sidebar-link {{ Request::routeIs('tebet.inventaris.index') ? 'active' : '' }}">
+                <i class="bi bi-archive-fill"></i>
+                <span>Inventaris</span>
+            </a>
+        </li>
+
+        {{-- 7. Replikasi & Konsistensi Data Terdistribusi --}}
+        <li class="sidebar-item">
+            <a href="{{ route('tebet.replikasi.index') }}" class="sidebar-link {{ Request::routeIs('tebet.replikasi.index') ? 'active' : '' }}">
+                <i class="bi bi-arrow-repeat"></i>
+                <span>Replikasi & Konsistensi</span>
+            </a>
+        </li>
+
+        {{-- 8. Laporan Analitis Keuangan --}}
+        <li class="sidebar-item">
+            <a href="{{ route('tebet.laporan.index') }}" class="sidebar-link {{ Request::routeIs('tebet.laporan.index') ? 'active' : '' }}">
+                <i class="bi bi-file-earmark-bar-graph-fill"></i>
+                <span>Laporan</span>
+            </a>
+        </li>
+
+        {{-- ========================================== --}}
+        {{-- MENU PENDUKUNG BAWAAN TEMPLATE --}}
+        {{-- ========================================== --}}
+        <li class="sidebar-item">
+            <a href="{{ route('tebet.cabang.index') }}" class="sidebar-link {{ Request::routeIs('tebet.cabang.index') ? 'active' : '' }}">
+                <i class="bi bi-shop-window"></i>
+                <span>Cabang</span>
+            </a>
+        </li>
+        <li class="sidebar-item">
+            <a href="{{ route('tebet.pengguna.index') }}" class="sidebar-link {{ Request::routeIs('tebet.pengguna.index') ? 'active' : '' }}">
+                <i class="bi bi-people-fill"></i>
+                <span>Pengguna</span>
+            </a>
+        </li>
+        <li class="sidebar-item">
+            <a href="{{ route('tebet.pengaturan.index') }}" class="sidebar-link {{ Request::routeIs('tebet.pengaturan.index') ? 'active' : '' }}">
+                <i class="bi bi-gear-fill"></i>
+                <span>Pengaturan</span>
+            </a>
+        </li>
+        <li class="sidebar-item border-top border-secondary-subtle my-3 pt-3">
+            <a href="{{ route('doc.index') }}" class="sidebar-link" target="_blank">
+                <i class="bi bi-book-half text-warning"></i>
+                <span class="text-warning">Modul Dokumentasi</span>
+            </a>
+        </li>
+    </ul>
+</aside>
 
     <!-- MAIN WRAPPER -->
     <div class="main-wrapper">
